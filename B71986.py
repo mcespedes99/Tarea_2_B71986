@@ -10,6 +10,12 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 df = pd.read_csv('datos.csv',header= None)
+#pmf = df[0].value_counts(normalize=True)
+#plt.bar(list(pmf.index), pmf.values)
+#pmf.plot.hist(bins=100)
+#df = pd.read_csv('datos.csv',header= None)
 a = df.to_numpy()
-plt.hist(a, bins=[0,5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100])
+plt.hist(a,20,(0,100),density=True) 
+plt.show()
+
 plt.show()
