@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from numpy import linspace, sqrt, arange, sqrt, exp, pi
 from scipy.stats import rayleigh, norm
+from IPython.display import Math, display
 
 print("Respuestas de la Tarea #1 del curso IE0405 - Modelos Probabilísticos de Señales y Sistemas.")
 print("Estudiante: Mauricio Céspedes Tenorio. Carné: B71986.")
@@ -84,7 +85,7 @@ plt.plot(x_2,pdf_norm_fit,'r-', label = "Modelo encontrado con ayuda de Scipy")
 x_3 = arange(0,12,0.3)
 plt.plot(x_3,exp(-((x_3-param_norm[0]))**2/(2*param_norm[1]**2))/(sqrt(2*pi*param_norm[1]**2)),'bo', label='Función encontrada "a mano"')
 #Impresión de la forma de esta función en terminal:
-print("La expresión para función de densidad de Y (PDF normal) es de la forma: fy(y)=e**[(y-5.90638504488997)/(2*2.646358282)] / (sqrt(2*pi*2.646358282)")
+print("La expresión para función de densidad de Y (PDF normal) es de la forma: f_y(y)=e**[(y-5.90638504488997)/(2*2.646358282)] / (sqrt(2*pi*2.646358282)). Donde 5.9064 es la media y 2.64636 es la varianza.")
 #Comando para abrir las gráficas (se añadieron títulos a los ejes y gráfico y leyendas):
 plt.xlabel('y')
 plt.ylabel('fy(y)')
