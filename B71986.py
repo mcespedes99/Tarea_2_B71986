@@ -64,7 +64,7 @@ media, var, skew, kurt = rayleigh.stats(loc=parametros[0],scale=parametros[1],mo
 print("\n\nPunto 7. Se calcularon los primeros cuatro momentos con ayuda de stats de Scipy.")
 print("i) La media de la PDF modelada es de: "+"{:.4f}".format(media)+". Lo cual indica que la mayoría de datos se encuentran alrededor de este punto. Esto coincide con lo visto en las gráficas.")
 print("ii) La varianza de la PDF modelada es de: "+"{:.4f}".format(var)+". Lo cual indica que ????")
-print("iii) La inclinación de la PDF modelada es de: "+"{:.4f}".format(media)+". Esto implica que la curva está sesgada hacia la derecha (tomando como referencia su media). En la curva se observa que hay más datos a la derecha de 37,57. Además, coincide con el valor esperado de inclinación para una PDF Rayleigh (0,63 aproximadamente).")
+print("iii) La inclinación de la PDF modelada es de: "+"{:.4f}".format(skew)+". Esto implica que la curva está sesgada hacia la derecha (tomando como referencia su media). En la curva se observa que hay más datos a la derecha de 37,57. Además, coincide con el valor esperado de inclinación para una PDF Rayleigh (0,63 aproximadamente).")
 print("iv) La kurtosis de la PDF modelada es de: "+"{:.4f}".format(kurt)+". Como es mayor que cero, implica que la curva tiene una cima prominente, lo cual es bastante evidente para PDF Rayleigh. Además, coincide con el valor esperador de Kurtosis para esta distribución (0,24 aproximadamente).")
 
 """Punto 8. Si los valores de datos.csv son X y pasa por la transformación Y = sqrt(X), graficar el histograma de Y. Encontrar la función de densidad de Y."""
