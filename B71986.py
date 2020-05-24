@@ -82,9 +82,9 @@ pdf_norm_fit = norm.pdf(x_2,loc=param_norm[0],scale=param_norm[1])
 plt.plot(x_2,pdf_norm_fit,'r-', label = "Modelo encontrado con ayuda de Scipy")
 #Encontré la función de dicha PDF normal y la grafiqué con puntos azules en la misma figura para corroborar que estuviera bien:
 x_3 = arange(0,12,0.3)
-plt.plot(x_3,(exp(-((x_3-param_norm[0])/param_norm[1])**2/2)/sqrt(2*pi))/param_norm[1],'bo', label='Función encontrada "a mano"')
+plt.plot(x_3,exp(-((x_3-param_norm[0]))**2/(2*param_norm[1]**2))/(sqrt(2*pi*param_norm[1]**2)),'bo', label='Función encontrada "a mano"')
 #Impresión de la forma de esta función en terminal:
-print("La expresión para función de densidad de Y (PDF normal) es de la forma: e**[{(y-5.90638504488997)/1.626763130114555)}/2] / (sqrt(2*pi)*1.626763130114555)")
+print("La expresión para función de densidad de Y (PDF normal) es de la forma: fy(y)=e**[(y-5.90638504488997)/(2*2.646358282)] / (sqrt(2*pi*2.646358282)")
 #Comando para abrir las gráficas (se añadieron títulos a los ejes y gráfico y leyendas):
 plt.xlabel('y')
 plt.ylabel('fy(y)')
