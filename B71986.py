@@ -63,7 +63,7 @@ print("La probabilidad del intervalo [19,86] con el modelo obtenido es de: "+"{:
 media, var, skew, kurt = rayleigh.stats(loc=parametros[0],scale=parametros[1],moments='mvsk')
 print("\n\nPunto 7. Se calcularon los primeros cuatro momentos con ayuda de stats de Scipy.")
 print("i) La media de la PDF modelada es de: "+"{:.4f}".format(media)+". Lo cual indica que la mayoría de datos se encuentran alrededor de este punto. Esto coincide con lo visto en las gráficas.")
-print("ii) La varianza de la PDF modelada es de: "+"{:.4f}".format(var)+". Lo cual indica que ????")
+print("ii) La varianza de la PDF modelada es de: "+"{:.4f}".format(var)+". Por ende, la desviación estándar es: " +"{:.4f}".format(sqrt(var))+  ", que es del mismo orden de magnitud que la media; lo cual indica que los datos están muy dispersos, que es usual en una PDF Rayleigh.")
 print("iii) La inclinación de la PDF modelada es de: "+"{:.4f}".format(skew)+". Esto implica que la curva está sesgada hacia la derecha (tomando como referencia su media). En la curva se observa que hay más datos a la derecha de 37,57. Además, coincide con el valor esperado de inclinación para una PDF Rayleigh (0,63 aproximadamente).")
 print("iv) La kurtosis de la PDF modelada es de: "+"{:.4f}".format(kurt)+". Como es mayor que cero, implica que la curva tiene una cima prominente, lo cual es bastante evidente para PDF Rayleigh. Además, coincide con el valor esperador de Kurtosis para esta distribución (0,24 aproximadamente).")
 
