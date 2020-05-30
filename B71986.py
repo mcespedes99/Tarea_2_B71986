@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from numpy import linspace, sqrt, arange, sqrt, exp, pi
 from scipy.stats import rayleigh, norm
-from IPython.display import Math, display
 
 print("Respuestas de la Tarea #1 del curso IE0405 - Modelos Probabilísticos de Señales y Sistemas.")
 print("Estudiante: Mauricio Céspedes Tenorio. Carné: B71986.")
