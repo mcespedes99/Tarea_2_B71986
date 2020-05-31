@@ -6,9 +6,10 @@ Empezada el Viernes 22 de Mayo 14:34 2020
 @author: Mauricio Céspedes Tenorio.
 Carné: B71986
 """
+#Librerías
 import matplotlib.pyplot as plt
 import pandas as pd
-from numpy import linspace, sqrt, arange, sqrt, exp, pi
+from numpy import linspace, sqrt, arange, sqrt, exp, pi, max
 from scipy.stats import rayleigh, norm
 
 print("Respuestas de la Tarea #1 del curso IE0405 - Modelos Probabilísticos de Señales y Sistemas.")
@@ -21,15 +22,15 @@ a = df.to_numpy()
 """Punto 4. Ploteo del histograma"""
 print("\n\nPunto 4. Para este caso, se graficó el histograma.")
 #Ploteo del histograma:
-plt.hist(a,15,(0,100),density=True)
+plt.hist(a,15,(0,a.max()),density=True)
 
 """Punto 5. Curva de mejor ajuste y su gráfica"""
 #Se encontró visualmente que el histograma tenía una forma similar a la PDF de Rayleigh.
 #Se encuentra el mejor fit (curva de mejor ajuste) de una función de distribución Rayleigh (esta función da como return la localización y escala de la curva de mejor ajuste):
 print("\n\nPunto 5. La curva de mejor ajuste se hizo observando que el histograma presenta un forma similar a una PDF Rayleigh. Se ploteó dicha curva sobre el histograma en una misma Figura.")
 parametros = rayleigh.fit(a)
-#Definición de un espacio lineal entre 0 y 100 con mil puntos.
-x = linspace(0,100,1000)
+#Definición de un espacio lineal entre 0 y el valor máximo de "a" con mil puntos.
+x = linspace(0,a.max(),1000)
 #Se crea una PDF Rayleigh con los datos obtenidos de la curva de mejor ajuste:
 pdf_fit = rayleigh.pdf(x,loc=parametros[0],scale=parametros[1])
 #Ploteo de la curva de mejor ajuste:
@@ -71,20 +72,22 @@ print("\n\nPunto 8. Se grafica el histograma de Y=sqrt(X), la curva de mejor aju
 #Primero, se encuentra la matriz con los valores de Y, que son la raíz de los valores de la matriz a:
 y = sqrt(a)
 #Ploteo del histograma de y:
-plt.hist(y,15,density=True)
+plt.hist(y,15,(0,y.max()),density=True)
 #Parámetro de curva de mejor ajuste para Y (del histograma se observó que parece una de distribución normal)
 param_norm = norm.fit(y)
-#Definición de un espacio lineal entre 0 y 12 con 100 puntos (se observó del histograma, que la curva está en este intervalo).
-x_2 = linspace(0,12,100)
+#Definición de un espacio lineal entre 0 y el valor máximo de "y" con 100 puntos (se observó del histograma, que la curva está en este intervalo).
+x_2 = linspace(0,y.max(),100)
 #Se crea una PDF normal con los datos obtenidos de la curva de mejor ajuste:
 pdf_norm_fit = norm.pdf(x_2,loc=param_norm[0],scale=param_norm[1])
 #Ploteo de la curva de mejor ajuste (puntos extra):
 plt.plot(x_2,pdf_norm_fit,'r-', label = "Modelo encontrado con ayuda de Scipy")
 #Encontré la función de dicha PDF normal y la grafiqué con puntos azules en la misma figura para corroborar que estuviera bien:
-x_3 = arange(0,12,0.3)
+x_3 = arange(0,y.max(),0.3)
 plt.plot(x_3,exp(-((x_3-param_norm[0]))**2/(2*param_norm[1]**2))/(sqrt(2*pi*param_norm[1]**2)),'bo', label='Función encontrada "a mano"')
+#Graficación de PDF normal encontrada con la fórmula respectiva (teoría):
+plt.plot(x_3,(2*x_3*(x_3**2-parametros[0]) / parametros[1]**2)* exp(-(x_3**2 -parametros[0])**2/(2*(parametros[1]**2))),'k--', label='Función encontrada con fórmula')
 #Impresión de la forma de esta función en terminal:
-print("La expresión para función de densidad de Y (PDF normal) es de la forma: f_y(y)=e**[(y-5.90638504488997)/(2*2.646358282)] / (sqrt(2*pi*2.646358282)). Donde 5.9064 es la media y 2.64636 es la varianza.")
+print("La expresión para función de densidad de Y (PDF normal) es de la forma: f_y(y)=e**[(y-5.90638504488997)^2 /(2*2.646358282)] / (sqrt(2*pi*2.646358282)). Donde 5.9064 es la media y 2.64636 es la varianza.")
 #Comando para abrir las gráficas (se añadieron títulos a los ejes y gráfico y leyendas):
 plt.xlabel('y')
 plt.ylabel('fy(y)')
